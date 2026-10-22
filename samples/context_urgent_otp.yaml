@@ -1,0 +1,6 @@
+# Context representing high-risk urgent OTP request
+amount: 25000.00
+new_beneficiary: true
+asks_otp: true
+urgency: "high"
+call_origin: "voip"

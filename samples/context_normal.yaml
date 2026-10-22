@@ -1,0 +1,6 @@
+# Context representing regular inquiry
+amount: 0.00
+new_beneficiary: false
+asks_otp: false
+urgency: "low"
+call_origin: "inbound"

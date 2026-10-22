@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Entrypoint for vishing-test-harness
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if [ -f "${SCRIPT_DIR}/.venv/bin/python" ]; then
+    PYTHON_EXEC="${SCRIPT_DIR}/.venv/bin/python"
+elif [ -f "${HOME}/.venvs/vishing-test-harness/bin/python" ]; then
+    PYTHON_EXEC="${HOME}/.venvs/vishing-test-harness/bin/python"
+elif command -v python3.11 >/dev/null 2>&1; then
+    PYTHON_EXEC="python3.11"
+else
+    PYTHON_EXEC="python3"
+fi
+
+export PYTHONPATH="${SCRIPT_DIR}:${PYTHONPATH}"
+exec "$PYTHON_EXEC" "${SCRIPT_DIR}/cli.py" "$@"

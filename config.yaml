@@ -1,0 +1,25 @@
+# Vishing Test Harness Configuration
+adapter: mock  # Options: mock, local, http
+send_format: original  # Options: original | wav16k | mp3
+
+thresholds:
+  spoof_threshold: 0.5
+  similarity_threshold: 0.75
+
+http:
+  url: "http://localhost:8000/analyze"
+  api_key_env: "VISHING_API_KEY"
+  timeout: 10.0
+  retries: 3
+  payload_format: "json"  # Options: json (base64 audio) or multipart
+
+local:
+  local_module: "adapters.mock"
+  local_function: "mock_analyze"
+  module_path: "adapters.mock:mock_analyze"
+
+paths:
+  reports_dir: "reports"
+  samples_dir: "samples"
+  scenarios_dir: "scenarios"
+  enrolled_dir: "data/enrolled"
